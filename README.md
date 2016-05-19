@@ -32,12 +32,12 @@ php yii migrate --migrationPath=vendor/halumein/yii2-wishlist/migrations
 
 Виджеты
 ==========
-В состав модуля входит несколько виджетов. Все работают аяксом.
+Кнопка добавить/убрать объект в избранное.
 
 ```php
 
 <?php
-use halumein\wishlist\widgets\BuyButton;
+use halumein\wishlist\widgets\WishlistButton;
 ?>
 
 <?php /* Выведет кнопку "добавить в избранное" */ ?>
