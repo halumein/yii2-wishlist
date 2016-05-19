@@ -1,0 +1,31 @@
+{
+    "name": "halumein/yii2-wishlist",
+    "description": "Кнопка добавить в избранное",
+    "keywords": ["yii2", "yii2", "application"],
+    "homepage": "https://github.com/halumein",
+    "type": "yii2-extension",
+    "license": "BSD-3-Clause",
+    "support": {
+        "source": "https://github.com/halumein"
+    },
+    "authors": [
+        {
+            "name": "Vadim Trishlin",
+            "email": "halumein@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4.0",
+        "yiisoft/yii2": "*",
+        "yiisoft/yii2-bootstrap": "*",
+    },
+    "config": {
+        "process-timeout": 1800
+    },
+    "autoload": {
+        "psr-4": {
+            "halumein\\wishlist\\": ""
+        }
+    }
+}
