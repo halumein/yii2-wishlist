@@ -21,11 +21,9 @@ php yii migrate --migrationPath=vendor/halumein/yii2-wishlist/migrations
 ---------------------------------
 В конфигурационный файл приложения добавить модуль wishlist
 
-И модуль (если хотите использовать виджеты)
-
 ```php
     'modules' => [
-        'cart' => [
+        'wishlist' => [
             'class' => 'halumein\wishlist\Module',
         ],
         //...
