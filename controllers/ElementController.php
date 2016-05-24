@@ -53,7 +53,8 @@ class ElementController extends Controller
 
         if ($checkModel) {
             return [
-                'response' => true
+                'response' => true,
+                'url' => Url::toRoute('/wishlist/element/remove'),
             ];
         }
 
