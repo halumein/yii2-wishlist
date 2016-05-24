@@ -42,6 +42,7 @@ class WishlistButton extends \yii\base\Widget
         }
 
         $action = 'add';
+        $url = '/wishlist/element/add';
         $model = $this->model;
 
         $elementModel = Wishlist::find()->where([
@@ -54,12 +55,13 @@ class WishlistButton extends \yii\base\Widget
             $this->text = 'В избранном';
             $this->cssClass .= ' '.$this->cssClassInList;
             $action = 'remove';
+            $url = '/wishlist/element/remove';
         }
 
         return Html::tag($this->htmlTag, $this->text, [
-            'href' => Url::toRoute('/cart/element/create'),
             'class' => $this->cssClass,
             'data-role' => 'hal_wishlist_button',
+            'data-url' => Url::toRoute($url),
             'data-action' => $action,
             'data-item-id' => $model->id,
             'data-model' => $model::className()

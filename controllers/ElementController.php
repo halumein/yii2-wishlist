@@ -5,7 +5,7 @@ namespace halumein\wishlist\controllers;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use halumein\wishlist\models\Wishlist;
-
+use yii\helpers\Url;
 
 
 /**
@@ -63,7 +63,8 @@ class ElementController extends Controller
 
         if ($wishlistModel->save()) {
             return [
-                'response' => true
+                'response' => true,
+                'url' => Url::toRoute('/wishlist/element/remove'),
             ];
         }
 
@@ -89,12 +90,14 @@ class ElementController extends Controller
         if ($elementModel) {
             if ($elementModel->delete()) {
                 return [
-                    'response' => true
+                    'response' => true,
+                    'url' => Url::toRoute('/wishlist/element/add'),
                 ];
             }
         } else {
             return [
-                'response' => true
+                'response' => true,
+                'url' => Url::toRoute('/wishlist/element/add'),
             ];
         }
 

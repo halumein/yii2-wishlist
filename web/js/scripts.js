@@ -1,11 +1,9 @@
 $(function () {
 
-
-
     var wishlist = {
-            addElement: function (model, itemId, button) {
+            addElement: function (model, itemId, url, button) {
                 $.post({
-                    url: '/wishlist/element/add',
+                    url: url,
                     data: { model: model, itemId: itemId},
                     beforeSend: function () {
                         $(button).data('action', 'wait').attr('data-action', 'wait');
@@ -13,11 +11,12 @@ $(function () {
                     success: function (response) {
                         if (response) {
                             $(button).data('action', 'remove').attr('data-action', 'remove');
+                            $(button).data('url', response.url).attr('data-url', response.url);
                             $(button).addClass('in-list');
                             $(button).text('В желаемом');
                             return true;
                         } else {
-                            $$(button).data('action', 'add').attr('data-action', 'add');
+                            $(button).data('action', 'add').attr('data-action', 'add');
                             return false;
                         }
                     }
@@ -27,9 +26,9 @@ $(function () {
                     return false;
                 });
             },
-            removeElement: function (model, itemId, button) {
+            removeElement: function (model, itemId, url, button) {
                 $.post({
-                    url: '/wishlist/element/remove',
+                    url: url,
                     data: { model: model, itemId: itemId},
                     beforeSend: function () {
                         $(button).data('action', 'wait').attr('data-action', 'wait');
@@ -37,6 +36,7 @@ $(function () {
                     success: function (response) {
                         if (response) {
                             $(button).data('action', 'add').attr('data-action', 'add');
+                            $(button).data('url', response.url).attr('data-url', response.url);
                             $(button).removeClass('in-list');
                             $(button).text('В список желаемого');
                             return true;
@@ -57,20 +57,14 @@ $(function () {
         var self = this,
             model = $(self).data('model'),
             itemId = $(self).data('item-id'),
-            action = $(self).data('action');
-
-
-        console.log();
+            action = $(self).data('action'),
+            url = $(self).data('url');
 
         if (action === 'add') {
-            wishlist.addElement(model, itemId, self);
+            wishlist.addElement(model, itemId, url, self);
         } else if (action === 'remove') {
-            wishlist.removeElement(model, itemId, self);
+            wishlist.removeElement(model, itemId, url, self);
         }
     });
-
-
-
-
 
 });
