@@ -1,5 +1,4 @@
 <?php
-
 namespace halumein\wishlist\controllers;
 
 use yii\web\Controller;
@@ -25,6 +24,13 @@ class ElementController extends Controller
                 ],
             ],
         ];
+    }
+
+    public function beforeAction($action)
+    {
+        $this->enableCsrfValidation = false;
+
+        return parent::beforeAction($action);
     }
 
     /**
