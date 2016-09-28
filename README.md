@@ -55,7 +55,8 @@ use halumein\wishlist\widgets\WishlistButton;
 <?php /* Выведет кнопку "добавить в избранное" с пользовательскими параметрами */ ?>
 <?= WishlistButton::widget([
 	'model' => $model, // модель для добавления
-	'text' => 'Добавить мой список', // свой текст кнопки
+	'anchorActive' => 'В избранное', // свой текст активной кнопки
+	'anchorUnactive' => 'В избранном', // свой текст неактивной кнопки
 	'htmlTag' => 'a', // тэг
 	'cssClass' => 'custom_class' // свой класс
     'cssClassInList' => 'custom_class' // свой класс для добавленного объекта

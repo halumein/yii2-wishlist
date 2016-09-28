@@ -8,7 +8,8 @@ use yii;
 
 class WishlistButton extends \yii\base\Widget
 {
-    public $text = NULL;
+    public $anchorActive = NULL;
+    public $anchorUnactive = NULL;
     public $model = NULL;
     public $cssClass = NULL;
     public $cssClassInList = NULL;
@@ -20,9 +21,15 @@ class WishlistButton extends \yii\base\Widget
 
         \halumein\wishlist\assets\WidgetAsset::register($this->getView());
 
-        if ($this->text === NULL) {
-            $this->text = 'В избранное';
+        if ($this->anchorActive === NULL) {
+            $this->anchorActive = 'В избранном';
         }
+
+        if ($this->anchorUnactive === NULL) {
+            $this->anchorUnactive = 'В избранное';
+        }
+
+        $anchor = ['active' => $this->anchorActive, 'unactive' => $this->anchorUnactive];
 
         if ($this->cssClass === NULL) {
             $this->cssClass = 'hal-wishlist-button';
@@ -31,6 +38,8 @@ class WishlistButton extends \yii\base\Widget
         if ($this->cssClassInList === NULL) {
             $this->cssClassInList = 'in-list';
         }
+
+        $this->getView()->registerJs("wishlist.anchor = ".json_encode($anchor));
 
         return true;
     }
@@ -44,6 +53,7 @@ class WishlistButton extends \yii\base\Widget
         $action = 'add';
         $url = '/wishlist/element/add';
         $model = $this->model;
+        $text = $this->anchorUnactive;
 
         $elementModel = Wishlist::find()->where([
             'user_id' => \Yii::$app->user->getId(),
@@ -52,13 +62,13 @@ class WishlistButton extends \yii\base\Widget
             ])->one();
 
         if ($elementModel) {
-            $this->text = 'В избранном';
+            $text = $this->anchorActive;
             $this->cssClass .= ' '.$this->cssClassInList;
             $action = 'remove';
             $url = '/wishlist/element/remove';
         }
 
-        return Html::tag($this->htmlTag, $this->text, [
+        return Html::tag($this->htmlTag, $text, [
             'class' => $this->cssClass,
             'data-role' => 'hal_wishlist_button',
             'data-url' => Url::toRoute($url),

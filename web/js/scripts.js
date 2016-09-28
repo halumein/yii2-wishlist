@@ -1,6 +1,6 @@
 $(function () {
-
-    var wishlist = {
+    wishlist = {
+        anchor:[],
             addElement: function (model, itemId, url, button) {
                 $.post({
                     url: url,
@@ -13,7 +13,7 @@ $(function () {
                             $(button).data('action', 'remove').attr('data-action', 'remove');
                             $(button).data('url', response.url).attr('data-url', response.url);
                             $(button).addClass('in-list');
-                            $(button).text('В желаемом');
+                            $(button).text(wishlist.anchor.active);
                             return true;
                         } else {
                             $(button).data('action', 'add').attr('data-action', 'add');
@@ -38,7 +38,7 @@ $(function () {
                             $(button).data('action', 'add').attr('data-action', 'add');
                             $(button).data('url', response.url).attr('data-url', response.url);
                             $(button).removeClass('in-list');
-                            $(button).text('В список желаемого');
+                            $(button).text(wishlist.anchor.unactive);
                             return true;
                         } else {
                             $(button).data('action', 'remove').attr('data-action', 'remove');
@@ -66,5 +66,5 @@ $(function () {
             wishlist.removeElement(model, itemId, url, self);
         }
     });
-
+    
 });
