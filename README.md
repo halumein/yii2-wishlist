@@ -8,7 +8,13 @@ Yii2-wishlist
 Выполнить команду
 
 ```
+composer require halumein/yii2-wishlist "*"
+```
 
+Либо в composer.json строку:
+
+```
+"halumein/yii2-wishlist": "dev-master",
 ```
 
 Далее, мигрируем базу:
