@@ -72,7 +72,7 @@ use halumein\wishlist\widgets\WishlistButton;
 	'anchorActive' => 'В избранном', // свой текст активной кнопки
 	'anchorUnactive' => 'В избранное', // свой текст неактивной кнопки
 	'htmlTag' => 'a', // тэг
-	'cssClass' => 'custom_class' // свой класс
+	'cssClass' => 'custom_class', // свой класс
     'cssClassInList' => 'custom_class' // свой класс для добавленного объекта
 ]) ?>
 
