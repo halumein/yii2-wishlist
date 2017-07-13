@@ -73,6 +73,7 @@ class WishlistButton extends \yii\base\Widget
             'data-role' => 'hal_wishlist_button',
             'data-url' => Url::toRoute($url),
             'data-action' => $action,
+            'data-in-list-css-class' => $this->cssClassInList,
             'data-item-id' => $model->id,
             'data-model' => $model::className()
         ]);
