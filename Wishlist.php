@@ -23,4 +23,9 @@ class Wishlist extends Component
 
         return $model::findOne($id);
     }
+
+    public function getUserWishlistAmount()
+    {
+        return \halumein\wishlist\models\Wishlist::find()->where(['user_id' => \Yii::$app->user->id])->count();
+    }
 }

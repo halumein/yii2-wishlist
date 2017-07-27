@@ -47,7 +47,15 @@ class Wishlist extends \yii\db\ActiveRecord
         ];
     }
 
-    
+    public function getItemModel()
+    {
+
+        $model = new $this->model;
+        return $model::findOne($this->item_id);
+
+
+
+    }
 
 
 }
