@@ -14,7 +14,7 @@ $(function () {
                         $(button).data('url', response.url).attr('data-url', response.url);
                         inListCssClass = $(button).data('in-list-css-class');
                         $(button).addClass(inListCssClass);
-                        $(button).text(wishlist.anchor.active);
+                        $(button).html(wishlist.anchor.active);
                         return true;
                     } else {
                         $(button).data('action', 'add').attr('data-action', 'add');
@@ -40,7 +40,7 @@ $(function () {
                         $(button).data('url', response.url).attr('data-url', response.url);
                         inListCssClass = $(button).data('in-list-css-class');
                         $(button).removeClass(inListCssClass);
-                        $(button).text(wishlist.anchor.unactive);
+                        $(button).html(wishlist.anchor.unactive);
                         return true;
                     } else {
                         $(button).data('action', 'remove').attr('data-action', 'remove');
