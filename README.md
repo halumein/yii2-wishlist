@@ -50,6 +50,10 @@ php yii migrate --migrationPath=vendor/halumein/yii2-wishlist/migrations
 \Yii::$app->wishlist->getUserWishList()
 ```
 
+Получить количество добавленных в вишлист объектов для текущего пользователя
+```php
+\Yii::$app->wishlist->getUserWishlistAmount()
+```
 
 Виджеты
 ==========
